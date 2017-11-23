@@ -10,12 +10,13 @@ export async function main(event, context, callback) {
       TableName: "processmap",
       Key: {
         userId: event.requestContext.identity.cognitoIdentityId,
-        processMapId: event.pathParameters.id
+        processMapId: data.id
       },
-      UpdateExpression: "SET isShared = :isShared, lastShared = :lastShared",
+      UpdateExpression: "SET isShared = :isShared, lastShared = :lastShared, sharedLinkCode = :sharedLinkCode",
       ExpressionAttributeValues: {
-        ":isShared": shareUID,
-        ":lastShared": new Date().getTime()
+        ":isShared": true,
+        ":lastShared": new Date().getTime(),
+        ":sharedLinkCode": shareUID,
       },
       ReturnValues: "ALL_NEW"
     };
@@ -32,7 +33,7 @@ export async function main(event, context, callback) {
       Item: {
         shareId: shareUID,
         userId: event.requestContext.identity.cognitoIdentityId,
-        processMapId: event.pathParameters.id,
+        processMapId: data.id,
         createdAt: new Date().getTime(),
         title: data.title,
         description: data.description,

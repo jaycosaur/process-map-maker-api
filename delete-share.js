@@ -2,11 +2,13 @@ import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context, callback) {
+  const data = JSON.parse(event.body);
+  
   const paramsUpdate = {
     TableName: "processmap",
     Key: {
       userId: event.requestContext.identity.cognitoIdentityId,
-      processMapId: event.pathParameters.id
+      processMapId: data.id
     },
     UpdateExpression: "SET isShared = :isShared",
     ExpressionAttributeValues: {
@@ -22,14 +24,14 @@ export async function main(event, context, callback) {
     // - 'processMapId': path parameter
     Key: {
       userId: event.requestContext.identity.cognitoIdentityId,
-      processMapId: event.pathParameters.id
+      processMapId: data.id
     }
   };
 
   const params = {
     TableName: "processmapshared",
     Key: {
-      shareId: event.pathParameters.shareId,
+      shareId: data.shareId,
     }
   };
 

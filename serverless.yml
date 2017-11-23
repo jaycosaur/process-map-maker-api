@@ -96,7 +96,7 @@ functions:
     handler: create-share.main
     events:
       - http:
-          path: processmaps/share/{id}
+          path: processmaps/share
           method: post
           cors: true
           authorizer: aws_iam
@@ -119,7 +119,7 @@ functions:
     handler: delete-share.main
     events:
       - http:
-          path: processmaps/share/{id}
+          path: processmaps/share
           method: delete
           cors: true
           authorizer: aws_iam

@@ -14,6 +14,7 @@ export async function main(event, context, callback) {
         content: data.content,
         isShared: null,
         lastShared: null,
+        sharedLinkCode: null,
         createdAt: new Date().getTime()
       }
     };
