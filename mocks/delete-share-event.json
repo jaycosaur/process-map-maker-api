@@ -1,0 +1,11 @@
+{
+    "pathParameters": {
+      "id": "fc67b4d0-bb67-11e7-983fasdf-2b1c102bdbf8",
+      "shareId": "22da74d0-d02c-11asdfe7-b384-1b6c0c2e6569"
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-12234"
+      }
+    }
+  }
